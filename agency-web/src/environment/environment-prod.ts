@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://api.hotelsuplay.com/api', 
+    apiUrl: 'https://qwiik-api-h8baf2bugfbcc8gd.southeastasia-01.azurewebsites.net/api', 
   };
   
