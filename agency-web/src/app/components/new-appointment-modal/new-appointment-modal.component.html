@@ -1,1 +1,23 @@
-<p>new-appointment-modal works!</p>
+<h2 mat-dialog-title>Create New Appointment</h2>
+
+<div class="appointment-form-container">
+  <form [formGroup]="appointmentForm" (ngSubmit)="submit()">
+    <mat-form-field class="full-width">
+      <mat-label>Appointment Date</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="appointmentDate">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="appointmentForm.get('appointmentDate')?.hasError('required')">
+        Appointment date is required
+      </mat-error>
+      <mat-error *ngIf="appointmentForm.get('appointmentDate')?.hasError('pastDate')">
+        Appointment date cannot be in the past
+      </mat-error>
+    </mat-form-field>
+
+    <div class="actions">
+      <button mat-button type="button" (click)="cancel()">Cancel</button>
+      <button mat-raised-button color="primary" type="submit" [disabled]="appointmentForm.invalid">Create</button>
+    </div>
+  </form>
+</div>

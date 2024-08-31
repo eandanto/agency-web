@@ -41,4 +41,13 @@ export class AuthService {
     }
     return '';
   }
+
+  getCustomerIdFromToken(): string {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedToken: any = jwtDecode(token);
+      return decodedToken.CustomerId; // Adjust according to how your token is structured
+    }
+    return '';
+  }
 }

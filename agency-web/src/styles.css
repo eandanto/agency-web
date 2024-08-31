@@ -1,1 +1,95 @@
-/* You can add global styles to this file, and also import other style files */
+/* Positioning the toast container */
+.toast-top-right {
+  top: 20px;
+  right: 20px;
+  z-index: 1060; /* Ensure it appears above other elements */
+}
+
+/* Base styling for all toasts */
+.toast {
+  background-color: #333; /* Dark background for all toasts */
+  color: #fff; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding for the content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  opacity: 0.95; /* Slight transparency */
+  max-width: 400px; /* Set your desired max-width here */
+  word-wrap: break-word; /* Ensure long words are wrapped */
+}
+
+/* Styling for the close button */
+.toast-close-button {
+  color: #fff; /* White close button */
+  opacity: 0.8; /* Slightly transparent close button */
+}
+
+.toast-close-button:hover {
+  color: #fff; /* Keep white on hover */
+  opacity: 1; /* Fully opaque on hover */
+}
+
+/* Success toasts */
+.toast-success {
+  color: #fff; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding for the content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  opacity: 0.95; /* Slight transparency */
+  background-color: #28a745; /* Green for success */
+  border-left: 4px solid #218838; /* Darker green left border */
+  max-width: 400px; /* Set your desired max-width here */
+  word-wrap: break-word; /* Ensure long words are wrapped */
+}
+
+/* Error toasts */
+.toast-error {
+  color: #fff; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding for the content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  opacity: 0.95; /* Slight transparency */
+  background-color: #dc3545; /* Red for error */
+  border-left: 4px solid #c82333; /* Darker red left border */
+  max-width: 400px; /* Set your desired max-width here */
+  word-wrap: break-word; /* Ensure long words are wrapped */
+}
+
+/* Info toasts */
+.toast-info {
+  color: #fff; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding for the content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  opacity: 0.95; /* Slight transparency */
+  background-color: #17a2b8; /* Blue for info */
+  border-left: 4px solid #138496; /* Darker blue left border */
+  max-width: 400px; /* Set your desired max-width here */
+  word-wrap: break-word; /* Ensure long words are wrapped */
+}
+
+/* Warning toasts */
+.toast-warning {
+  color: #fff; /* White text */
+  border-radius: 8px; /* Rounded corners */
+  padding: 16px; /* Padding for the content */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  opacity: 0.95; /* Slight transparency */
+  background-color: #ffc107; /* Yellow for warnings */
+  color: #212529; /* Dark text for contrast */
+  border-left: 4px solid #e0a800; /* Darker yellow left border */
+  max-width: 400px; /* Set your desired max-width here */
+  word-wrap: break-word; /* Ensure long words are wrapped */
+}
+
+.toast-title {
+  font-weight: 700;
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

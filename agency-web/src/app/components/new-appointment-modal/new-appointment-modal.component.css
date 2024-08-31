@@ -1,0 +1,30 @@
+/* Add padding inside the modal */
+.mat-dialog-container {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+/* Adjust the height of the modal */
+.appointment-form-container {
+  height: 150px; /* Increase this value as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Ensure the form fields take up full width */
+.full-width {
+  width: 100%;
+}
+
+/* Style the action buttons */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+  margin-right: 20px;
+}
+
+.actions button {
+  margin-left: 10px;
+}
