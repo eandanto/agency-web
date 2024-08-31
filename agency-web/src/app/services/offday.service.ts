@@ -65,7 +65,6 @@ export class OffDayService {
     return {
       Id: offDay.id,
       Day: offDay.day,
-      Description: offDay.description,
     } as OffDayDto;
   }
 }
