@@ -1,0 +1,68 @@
+<div class="login-container">
+    <div class="login-card">
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm" novalidate>
+        <div class="form-group">
+          <label>Register as a</label>
+          <select [(ngModel)]="userType" name="userType" required>
+            <option value="customer">Customer</option>
+            <option value="staff">Staff</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label>First Name</label>
+          <input type="text" [(ngModel)]="firstName" name="firstName" placeholder="Enter your first name"
+                 required #firstNameInput="ngModel">
+          <div *ngIf="firstNameInput.invalid && (firstNameInput.dirty || firstNameInput.touched)" class="error-message">
+            <div *ngIf="firstNameInput.errors?.['required']">First name is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label>Last Name</label>
+          <input type="text" [(ngModel)]="lastName" name="lastName" placeholder="Enter your last name"
+                 required #lastNameInput="ngModel">
+          <div *ngIf="lastNameInput.invalid && (lastNameInput.dirty || lastNameInput.touched)" class="error-message">
+            <div *ngIf="lastNameInput.errors?.['required']">Last name is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email"
+                 required email #emailInput="ngModel">
+          <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error-message">
+            <div *ngIf="emailInput.errors?.['required']">Email is required.</div>
+            <div *ngIf="emailInput.errors?.['email']">Please enter a valid email address.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Enter your password"
+                 required #passwordInput="ngModel">
+          <div *ngIf="passwordInput.invalid && (passwordInput.dirty || passwordInput.touched)" class="error-message">
+            <div *ngIf="passwordInput.errors?.['required']">Password is required.</div>
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label>Confirm Password</label>
+          <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirm your password"
+                 required #confirmPasswordInput="ngModel">
+          <div *ngIf="confirmPasswordInput.invalid && (confirmPasswordInput.dirty || confirmPasswordInput.touched)" class="error-message">
+            <div *ngIf="confirmPasswordInput.errors?.['required']">Confirm password is required.</div>
+          </div>
+        </div>
+  
+        <!-- Password mismatch error message -->
+        <div *ngIf="passwordMismatch" class="error-message">
+          Passwords do not match.
+        </div>
+  
+        <button type="submit" [disabled]="registerForm.invalid">Register</button>
+      </form>
+      <p>Already have an account? <a routerLink="/login">Login here</a></p>
+    </div>
+  </div>
+  
