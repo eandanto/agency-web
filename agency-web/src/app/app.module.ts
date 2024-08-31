@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -42,6 +43,7 @@ import { ConfigurationModalComponent } from './components/configuration-modal/co
     MatButtonModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,

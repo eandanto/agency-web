@@ -43,6 +43,7 @@ export class NewAppointmentModalComponent {
         AppointmentDate: this.appointmentForm.value.appointmentDate,
         Token: '',
         InsertedAt: new Date(),
+        CustomerEmailAddress: null
       };
       this.dialogRef.close(formData);
     }

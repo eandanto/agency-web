@@ -1,0 +1,59 @@
+.mat-dialog-container {
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.day-off-container {
+  margin-top: 20px;
+}
+
+.day-off-container h3 {
+  margin-bottom: 10px;
+}
+
+.day-off-container table {
+  width: 100%;
+  margin-bottom: 20px;
+  border-collapse: collapse;
+}
+
+.day-off-container th,
+.day-off-container td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.day-off-container th {
+  background-color: #f1f1f1;
+}
+
+.add-day-off-container {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.mat-mdc-dialog-actions {
+  justify-content: center !important;
+}
+
+.btn-dayoff {
+  width: 50% !important;
+  height: 57px !important;
+}
+
+.input-dayoff {
+  width: 50% !important;
+}

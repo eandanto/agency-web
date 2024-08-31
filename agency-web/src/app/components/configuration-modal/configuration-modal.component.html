@@ -1,1 +1,63 @@
-<p>configuration-modal works!</p>
+<h2 mat-dialog-title>Configuration</h2>
+<div mat-dialog-content>
+  <mat-tab-group>
+    <!-- General Configuration Tab -->
+    <mat-tab label="General Configuration">
+      <form [formGroup]="configForm">
+        <div *ngFor="let config of configurations">
+          <mat-form-field class="full-width">
+            <mat-label>{{ replaceUnderscoresWithSpaces(config.PropertyName) }}</mat-label>
+            <input
+              matInput
+              [formControlName]="config.PropertyName"
+              [id]="config.Id"
+              type="text"
+            />
+            <mat-error *ngIf="configForm.get(config.PropertyName)?.hasError('required')">
+              {{ replaceUnderscoresWithSpaces(config.PropertyName) }} is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+          <button mat-button (click)="onCancel()">Cancel</button>
+          <button mat-raised-button color="primary" (click)="onSaveGeneral()">Save General Configurations</button>
+        </div>
+      </form>
+    </mat-tab>
+
+    <!-- Day Off Configuration Tab -->
+    <mat-tab label="Day Off Configuration">
+      <div class="day-off-container">
+        <div class="add-day-off-container">
+          <mat-form-field class="date-input input-dayoff">
+            <mat-label>Select Date</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="newDayOff">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <button class="btn-dayoff" mat-raised-button color="primary" (click)="addDayOff()" [disabled]="!newDayOff">Add New Day Off</button>
+        </div>
+
+        <table>
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dayOff of dayOffs">
+                <td>{{ dayOff.Day| date: 'dd MMM yyyy' }}</td>
+                <td>
+                  <button mat-button color="warn" (click)="removeDayOff(dayOff)">Remove</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+      <div mat-dialog-actions>
+        <button mat-button (click)="onCancel()">Cancel</button>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>

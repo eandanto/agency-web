@@ -13,39 +13,6 @@ export class AppointmentService {
 
   constructor(private http: HttpClient) {}
 
-  getAppointments(
-    id: string,
-    page: number,
-    pageSize: number
-  ): Observable<{ appointments: AppointmentDto[]; totalCounts: number }> {
-    const token = localStorage.getItem('token'); // Get the token from localStorage
-
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${token}`, // Set the Authorization header
-    });
-
-    return this.http
-      .get<{
-        appointments: any[];
-        totalCounts: number;
-      }>(
-        `${this.apiUrl}/appointment/getmyappointments?id=${id}&pageNo=${page}&pageSize=${pageSize}`,
-        { headers }
-      )
-      .pipe(
-        map(response => ({
-          appointments: response.appointments.map(a => ({
-            Id: a.id,
-            CustomerId: a.customerId,
-            Token: a.token,
-            AppointmentDate: new Date(a.appointmentDate),
-            InsertedAt: new Date(a.insertedAt),
-          } as AppointmentDto)),
-          totalCounts: response.totalCounts,
-        }))
-      );
-  }
-
   setAppointment(appointment: AppointmentDto): Observable<any> {
     const token = localStorage.getItem('token'); // Get the token from localStorage
 
@@ -58,5 +25,38 @@ export class AppointmentService {
       appointment,
       { headers }
     );
+  }
+
+  getAppointments(
+    id: string | null, // Allow null for staff to fetch all appointments
+    page: number,
+    pageSize: number,
+    date: string | null
+  ): Observable<{ appointments: AppointmentDto[]; totalCounts: number }> {
+    const token = localStorage.getItem('token');
+
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+
+    const url = id
+      ? `${this.apiUrl}/appointment/getmyappointments?id=${id}&pageNo=${page}&pageSize=${pageSize}`
+      : `${this.apiUrl}/appointment/getallappointments?pageNo=${page}&pageSize=${pageSize}&date=${date}`;
+
+    return this.http
+      .get<{ appointments: any[]; totalCounts: number }>(url, { headers })
+      .pipe(
+        map((response) => ({
+          appointments: response.appointments.map((a) => ({
+            Id: a.id,
+            CustomerId: a.customerId,
+            Token: a.token,
+            AppointmentDate: new Date(a.appointmentDate),
+            InsertedAt: new Date(a.insertedAt),
+            CustomerEmailAddress: a.customerEmailAddress
+          })),
+          totalCounts: response.totalCounts,
+        }))
+      );
   }
 }

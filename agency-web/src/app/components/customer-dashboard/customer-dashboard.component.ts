@@ -37,7 +37,7 @@ export class CustomerDashboardComponent implements OnInit {
 
   fetchAppointments(): void {
     this.appointmentService
-      .getAppointments(this.customerId, this.currentPage, this.pageSize)
+      .getAppointments(this.customerId, this.currentPage, this.pageSize, null)
       .subscribe((response) => {
         this.appointments = response.appointments;
         this.totalAppointments = response.totalCounts;
@@ -65,11 +65,14 @@ export class CustomerDashboardComponent implements OnInit {
         const userSelectedDate = result.AppointmentDate;
 
         // Format the date as a local time string before sending
-      const localDateString = format(userSelectedDate, "yyyy-MM-dd'T'HH:mm:ss");
-      const appointment = {
-        ...result,
-        AppointmentDate: localDateString,
-      };
+        const localDateString = format(
+          userSelectedDate,
+          "yyyy-MM-dd'T'HH:mm:ss"
+        );
+        const appointment = {
+          ...result,
+          AppointmentDate: localDateString,
+        };
 
         this.appointmentService.setAppointment(result).subscribe(
           (apiResponse: any) => {
@@ -97,7 +100,8 @@ export class CustomerDashboardComponent implements OnInit {
             this.fetchAppointments(); // Refresh the appointments list
           },
           (error) => {
-            this.toastr.error('Failed to create appointment');
+            const errorMessage = error.error?.message || 'Failed to create appointment';
+            this.toastr.error(errorMessage);
           }
         );
       }

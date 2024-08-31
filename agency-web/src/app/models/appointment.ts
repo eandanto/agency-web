@@ -4,5 +4,6 @@ export interface AppointmentDto {
     Token: string;
     AppointmentDate: Date;
     InsertedAt: Date;
+    CustomerEmailAddress?: string | null;
   }
   
