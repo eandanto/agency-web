@@ -34,7 +34,8 @@ export class StaffDashboardComponent implements OnInit {
   }
 
   fetchAppointments(): void {
-    const formattedDate = format(this.selectedDate, "yyyy-MM-dd'T'HH:mm:ss"); // Format date to send to the backend
+    // const formattedDate = format(this.selectedDate, "yyyy-MM-dd'T'HH:mm:ss"); // Format date to send to the backend
+    const formattedDate = new Date(this.selectedDate).toISOString(); // Format date to send to the backend
     this.appointmentService
       .getAppointments(null, this.currentPage, this.pageSize, formattedDate)
       .subscribe((response) => {
