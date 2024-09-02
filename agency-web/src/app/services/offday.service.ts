@@ -35,7 +35,7 @@ export class OffDayService {
     });
 
     // Format the date as YYYY-MM-DD
-    const formattedDate = format(dayOff, 'yyyy-MM-dd');
+    const formattedDate = new Date(dayOff).toISOString(); // Format date to send to the backend
 
     return this.http
       .get<any>(`${this.apiUrl}/OffDay/SetOffDay?date=${formattedDate}`, {
