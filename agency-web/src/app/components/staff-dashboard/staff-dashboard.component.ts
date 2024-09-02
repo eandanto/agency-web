@@ -34,10 +34,15 @@ export class StaffDashboardComponent implements OnInit {
   }
 
   fetchAppointments(): void {
-    // const formattedDate = format(this.selectedDate, "yyyy-MM-dd'T'HH:mm:ss"); // Format date to send to the backend
-    console.log(this.selectedDate);
-    const formattedDate = new Date(this.selectedDate).toISOString(); // Format date to send to the backend
-    console.log(formattedDate);
+    const date = new Date(this.selectedDate);
+    if (
+      date.getHours() !== 0 ||
+      date.getMinutes() !== 0 ||
+      date.getSeconds() !== 0
+    ) {
+      date.setHours(0, 0, 0, 0); // Set time to 00:00:00
+    }
+    const formattedDate = new Date(date).toISOString(); // Format date to send to the backend
     this.appointmentService
       .getAppointments(null, this.currentPage, this.pageSize, formattedDate)
       .subscribe((response) => {

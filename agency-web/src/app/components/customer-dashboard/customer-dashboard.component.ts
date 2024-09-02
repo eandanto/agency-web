@@ -86,8 +86,6 @@ export class CustomerDashboardComponent implements OnInit {
             const createdDate = new Date(createdAppointment.AppointmentDate);
             const selectedDate = new Date(userSelectedDate);
             if (createdDate.getTime() !== selectedDate.getTime()) {
-              console.log(createdDate.getTime());
-              console.log(selectedDate.getTime());
               this.toastr.info(
                 `Appointment slots for your selected date are full. Your appointment has been created on the next available date: ${createdDate.toDateString()}`
               );
